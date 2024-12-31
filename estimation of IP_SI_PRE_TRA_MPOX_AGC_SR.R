@@ -1,4 +1,4 @@
-# Plotting the Mpox Incubation period vs the density distribution 
+# Estimation of the Mpox Incubation period vs the density distribution 
 
 ####################################################################
 # Load necessary libraries
@@ -82,7 +82,7 @@ print(final_combined_plot)
 # Save the combined plot
 ggsave(filename = "/Users/yehyaalthobaity/Desktop/monkeybox/figure/combined_plot_km_with_density_ip.pdf", plot = final_combined_plot, width = 8, height = 6)
 #######################################
-# Plotting the Mpox Serial interval vs the density distribution 
+# Estimation of the Mpox Serial interval vs the density distribution 
 
 library(ggplot2)
 library(survival)
