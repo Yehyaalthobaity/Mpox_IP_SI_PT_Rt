@@ -9,7 +9,7 @@ library(grid)
 tdata
 # Example data (replace with your actual data)
 # tdata <- your_data_frame
-# allthree <- list(myfit = fitted_weibull_model, myfit_gamma = fitted_gamma_model, myfit_lnorm = fitted_lognormal_model)
+# threedist <- list(myfit = fitted_weibull_model, myfit_gamma = fitted_gamma_model, myfit_lnorm = fitted_lognormal_model)
 
 # Kaplan-Meier fit
 km_fit <- survfit(Surv(tdata$minIncTimes, tdata$maxIncTimes, type = "interval2") ~ 1, data = tdata)
@@ -27,9 +27,9 @@ days <- seq(0, 25, by = 0.05)
 pdata <- data.frame(
   days = rep(days, 3),
   fitsurv = c(
-    1 - pweibull(days, shape = exp(allthree$myfit$coefficients[1]), scale = exp(allthree$myfit$coefficients[2])),
-    1 - pgamma(days, shape = exp(allthree$myfit_gamma$coefficients[1]), scale = exp(allthree$myfit_gamma$coefficients[2])),
-    1 - plnorm(days, meanlog = allthree$myfit_lnorm$coefficients[1], sdlog = exp(allthree$myfit_lnorm$coefficients[2]))
+    1 - pweibull(days, shape = exp(threedist$myfit$coefficients[1]), scale = exp(allthree$myfit$coefficients[2])),
+    1 - pgamma(days, shape = exp(threedist$myfit_gamma$coefficients[1]), scale = exp(allthree$myfit_gamma$coefficients[2])),
+    1 - plnorm(days, meanlog = threedist$myfit_lnorm$coefficients[1], sdlog = exp(threedist$myfit_lnorm$coefficients[2]))
   ),
   distn = c(rep("Weibull", length(days)), rep("Gamma", length(days)), rep("Log normal", length(days)))
 )
@@ -285,7 +285,7 @@ portion_pre_symptom_unstratified
 mean_time_diff = mean(a1$timedifferance)
 mean_time_diff
 # Load external data for further processing
-load("allthree_and_data.Rdata") 
+load("threedist_and_data.Rdata") 
 
 # Function to generate differences based on statistical fits
 getMyDiffs <- function(statfit, cormean = 0.389) {
@@ -303,7 +303,7 @@ getMyDiffs <- function(statfit, cormean = 0.389) {
 }
 
 # Call the function for different fits
-anydiffs = getMyDiffs(allthree$myfit_gamma)
+anydiffs = getMyDiffs(threedist$myfit_gamma)
 
 # Combine the data for plotting
 a1 = data.frame(timedifferance = anydiffs$diffs, group = "Unstratified")
