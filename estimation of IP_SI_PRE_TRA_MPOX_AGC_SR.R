@@ -8,7 +8,8 @@ library(viridis)
 library(grid)
 tdata
 # Example data (replace with your actual data)
-# tdata <- your_data_frame
+# IP_MPOX_AGC -> tdata
+
 # threedist <- list(myfit = fitted_weibull_model, myfit_gamma = fitted_gamma_model, myfit_lnorm = fitted_lognormal_model)
 
 # Kaplan-Meier fit
