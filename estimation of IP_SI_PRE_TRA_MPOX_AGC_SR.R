@@ -90,7 +90,7 @@ library(survival)
 library(viridis)
 library(survminer)
 library(grid)
-
+# SI_MPOX_AGC is the difference between the symptom onset of the index case and its secondary..
 # Kaplan-Meier plot with extended x-axis to 25 days
 km_plot <- ggsurvplot(
   fit = km_fit,
